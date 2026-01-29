@@ -22,6 +22,8 @@ app.get("/p/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "paste.html"));
 });
 
+const PORT = process.env.PORT || 3000;
+
 app.get("/", (req, res) => {
   res.send(`
     <h1>Pastebin Lite</h1>
@@ -29,7 +31,7 @@ app.get("/", (req, res) => {
     <p>Health check: <a href="/api/healthz">/api/healthz</a></p>
   `);
 });
-const PORT = process.env.PORT || 3000;
+
 
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
