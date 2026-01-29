@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Paste</title>
+</head>
+<body>
+  <pre id="content">Loading...</pre>
+
+  <script>
+    const id = location.pathname.split("/").pop();
+
+    fetch(`/api/pastes/${id}`)
+      .then(res => {
+        if (!res.ok) throw new Error();
+        return res.json();
+      })
+      .then(data => {
+        document.getElementById("content").innerText = data.content;
+      })
+      .catch(() => {
+        document.body.innerHTML = "<h1>404 Not Found</h1>";
+      });
+  </script>
+</body>
+</html>
