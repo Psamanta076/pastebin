@@ -22,6 +22,13 @@ app.get("/p/:id", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "paste.html"));
 });
 
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>Pastebin Lite</h1>
+    <p>Use the API to create pastes.</p>
+    <p>Health check: <a href="/api/healthz">/api/healthz</a></p>
+  `);
+});
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
